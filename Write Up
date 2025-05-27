@@ -1,0 +1,22 @@
+=> Code Structure
+
+-MobiusStrip class encapsulates parameters, coordinate computation, and calculations.
+-Uses numpy to mesh grid the (u, v) space and apply the Möbius strip parametric equation.
+-Surface area is computed using the magnitude of the cross product of partial derivatives ∂r/∂u × ∂r/∂v.
+-Edge length is computed by discretizing the boundary curve at v = w/2.
+
+=> Surface Area Approximation
+
+-Numerical integration is used.
+-The area element is approximated as:
+
+mod|dr/du * dr/dv|dudv
+
+-Computed this across the mesh and sum the results.
+
+
+=> Challenges
+
+-Handling mesh resolution to ensure balance between performance and accuracy.
+-Avoiding numerical instability in gradient computation near wraparound edges (high resolution helps).
+-Visualization can be tricky due to self-intersecting appearance — matplotlib handles it well but 3D interaction helps.
